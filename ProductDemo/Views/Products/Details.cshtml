@@ -1,0 +1,40 @@
+﻿@model ProductDemo.Models.Products
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Products</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pro_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pro_Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pro_Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pro_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pro_Prize)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pro_Prize)
+        </dd>
+    </dl>
+</div>
+<form asp-action="AddtoCart" asp-controller="Cart" method="post">
+    <input type="hidden" name="Pro_Id" value="@Model.Pro_Id" />
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Pro_Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

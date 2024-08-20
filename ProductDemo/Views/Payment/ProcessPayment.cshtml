@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "ProcessPayment";
+}
+
+<h1>ProcessPayment</h1>
+
+@{
+    var merchantKey = ViewBag.MerchantKey as string;
+    var transactionId = ViewBag.TransactionId as string;
+    var amount = ViewBag.Amount as object;
+    var productInfo = ViewBag.ProductInfo as string;
+    var firstName = ViewBag.FirstName as string;
+    var email = ViewBag.Email as string;
+    var phone = ViewBag.Phone as string;
+    var Address = ViewBag.address as string;
+    var surl = ViewBag.Surl as string;
+    var furl = ViewBag.Furl as string;
+    var hash = ViewBag.Hash as string;
+    var serviceProvider = ViewBag.ServiceProvider as string;
+    var payUBaseURL = ViewBag.PayUBaseURL as string;
+}
+
+<form action="@ViewBag.payUBaseURL" method="post" name="payuForm" id="payuForm">
+    <input type="hidden" name="key" value="@ViewBag.MerchantKey" />
+    <input type="hidden" name="txnid" value="@ViewBag.TransactionId" />
+    <input type="hidden" name="amount" value="@ViewBag.Amount" />
+    <input type="hidden" name="productinfo" value="@ViewBag.ProductInfo" />
+    <input type="hidden" name="firstname" value="@ViewBag.FirstName" />
+    <input type="hidden" name="email" value="@ViewBag.Email" />
+    <input type="hidden" name="phone" value="@ViewBag.Phone" />
+    <input type="hidden" name="address" value="@ViewBag.Address" />
+    <input type="hidden" name="surl" value="@ViewBag.Surl" />
+    <input type="hidden" name="furl" value="@ViewBag.Furl" />
+    <input type="hidden" name="hash" value="@ViewBag.Hash" />
+    <input type="hidden" name="service_provider" value="@ViewBag.ServiceProvider" />
+
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="firstname" value="@firstName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" value="@email" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" value="@phone" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" value="@Address" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" name="amount" value="@amount" class="form-control" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Pay Now</button>
+</form>
+
+<script>
+    document.getElementById('payuForm').submit();
+</script>
+
